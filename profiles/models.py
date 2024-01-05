@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.signals import post_save#this is connected to creating the profile
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 
@@ -10,18 +10,19 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_duvxwt' #for cloudinary
+        upload_to='images/', default='../default_profile_qdjgyp'
     )
-    
+
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
         return f"{self.owner}'s profile"
 
-#everytime a user is created, a signal will be triggered to create the profile
+
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(owner=instance)
 
-post_save.connect(create_profile, sender=User)#sender is the user that requests profile creation
+
+post_save.connect(create_profile, sender=User)
