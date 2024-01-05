@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),#adds the login logout functionality
     path('', include('profiles.urls')),
+    path('', include('posts.urls')),
 ]
