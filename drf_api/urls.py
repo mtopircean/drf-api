@@ -21,4 +21,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),#adds the login logout functionality
     path('', include('profiles.urls')),
     path('', include('posts.urls')),
+    path('', include('comments.urls')),
 ]
